@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.azhell.nettyLearn.mapper.UserInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.azhell.nettyLearn.model.po.UserInfo">
+        <id column="userId" property="userId" />
+        <result column="userName" property="username" />
+        <result column="passWords" property="password" />
+        <result column="avatarUrl" property="avatarUrl" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        userId, userName, passWords, avatarUrl
+    </sql>
+
+    <select id="selectUserInfoAll" resultMap="BaseResultMap">
+        select userId,userName,passWords,avatarUrl from so_userinfo
+    </select>
+    <select id="getByUserId" parameterType="org.azhell.nettyLearn.model.po.UserInfo"  resultMap="BaseResultMap">
+        select userId,userName,passWords,avatarUrl from so_userinfo where userId=#{userId}
+    </select>
+    <select id="getByUsername" parameterType="org.azhell.nettyLearn.model.po.UserInfo"  resultMap="BaseResultMap">
+        select userId,userName,passWords,avatarUrl from so_userinfo where userName=#{userName}
+    </select>
+
+</mapper>

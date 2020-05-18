@@ -38,4 +38,10 @@ public class ChatRoomController {
         Object userId = session.getAttribute(Constant.USER_TOKEN);
         return userInfoService.getByUserId((String)userId);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/addUserInfo",method = RequestMethod.POST)
+    public String addUserInfo(UserInfo userInfo){
+        return userInfo.getUsername();
+    }
 }
